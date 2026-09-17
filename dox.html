@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как создать и использовать planet.bat</title>
+<style>
+body{margin:0;background:#0d1117;color:#e6edf3;font-family:Arial,sans-serif;line-height:1.65}main{max-width:900px;margin:40px auto;padding:32px;background:#161b22;border-radius:16px}h1,h2{color:#fff}code,pre{background:#0d1117;border-radius:8px}code{padding:3px 6px;color:#79c0ff}pre{padding:18px;overflow:auto;border:1px solid #30363d}.note{padding:14px;border-left:4px solid #58a6ff;background:#1c2430}.warn{padding:14px;border-left:4px solid #d29922;background:#2a2111}a{color:#58a6ff}</style>
+</head>
+<body>
+<main>
+<h1>📄 Как создать и использовать <code>planet.bat</code></h1>
+<p>Эта инструкция объясняет, как создать обычный Windows BAT-файл, загрузить его в GitHub и скачать его через HTML-страницу.</p>
+
+<h2>1. Что такое .bat</h2>
+<p>Файл с расширением <code>.bat</code> — это текстовый файл Windows, содержащий команды командной строки. Он выполняется только после явного запуска пользователем в Windows.</p>
+
+<h2>2. Как создать planet.bat</h2>
+<ol>
+<li>Открой Windows и запусти «Блокнот».</li>
+<li>Напиши нужные команды в текстовом файле.</li>
+<li>Выбери <b>Файл → Сохранить как</b>.</li>
+<li>В поле имени укажи <code>planet.bat</code>.</li>
+<li>В поле типа выбери <b>Все файлы</b>.</li>
+<li>Сохрани файл.</li>
+</ol>
+
+<div class="warn"><b>Важно:</b> не сохраняй его как <code>planet.bat.txt</code>. Если расширения файлов скрыты, Windows может показать неочевидное имя.</div>
+
+<h2>3. Проверка файла</h2>
+<p>Перед публикацией проверь, что файл действительно называется <code>planet.bat</code>. Открой его через Блокнот и убедись, что внутри находятся именно те команды, которые ты собирался использовать.</p>
+
+<h2>4. Загрузка в GitHub</h2>
+<ol>
+<li>Открой свой репозиторий.</li>
+<li>Нажми <b>Add file → Upload files</b>.</li>
+<li>Перетащи <code>planet.bat</code> на страницу.</li>
+<li>Убедись, что файл находится в корне репозитория, если HTML использует путь <code>/main/planet.bat</code>.</li>
+<li>Нажми <b>Commit changes</b>.</li>
+</ol>
+
+<h2>5. Где должен находиться файл</h2>
+<pre>-/
+├── planet.bat
+├── dox.html
+└── ...</pre>
+<p>Если <code>planet.bat</code> находится в другой папке, путь в HTML-кнопке Download нужно изменить.</p>
+
+<h2>6. Как скачать файл</h2>
+<p>Для твоего репозитория HTML может использовать raw-ссылку:</p>
+<pre>https://github.com/n6767ooo6767-cmyk/-/raw/refs/heads/main/planet.bat</pre>
+<p>Кнопка Download только передаёт браузеру запрос на скачивание. Сам HTML не запускает BAT-файл.</p>
+
+<h2>7. Как запустить файл в Windows</h2>
+<p>После скачивания открой папку загрузок и найди <code>planet.bat</code>. Перед запуском убедись, что ты доверяешь его содержимому. Двойной щелчок по BAT-файлу запускает записанные в нём команды Windows.</p>
+
+<div class="note"><b>Безопасность:</b> не запускай неизвестные BAT-файлы. BAT-файлы могут выполнять команды с правами текущего пользователя, поэтому сначала всегда проверяй их содержимое.</div>
+
+<h2>8. Если Copy не работает</h2>
+<p>Современные браузеры могут ограничивать доступ к буферу обмена. Кроме того, чтение файла с другого источника может быть ограничено политиками безопасности браузера. Поэтому на странице предусмотрена запасная кнопка <b>OR DOWNLOAD</b>.</p>
+
+<h2>9. Рекомендуемая структура страницы</h2>
+<pre>&lt;button&gt;Copy&lt;/button&gt;
+
+OR
+
+&lt;a href=".../planet.bat" download&gt;
+    Download planet.bat
+&lt;/a&gt;</pre>
+
+<h2>10. Если появляется ошибка 404</h2>
+<p>Проверь три вещи:</p>
+<ul>
+<li>файл называется точно <code>planet.bat</code>;</li>
+<li>файл находится в правильной ветке, например <code>main</code>;</li>
+<li>путь в URL соответствует расположению файла.</li>
+</ul>
+
+<h2>11. Итог</h2>
+<p>Создай <code>planet.bat</code> → проверь его содержимое → загрузите его в GitHub → проверь путь → используй HTML-кнопку Copy или Download.</p>
+
+<p><a href="./planet.bat">Открыть planet.bat</a></p>
+</main>
+</body>
+</html>
