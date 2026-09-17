@@ -1,14 +1,65 @@
-<button onclick="downloadPlanet()">Скачать planet.bat</button>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="planet.bat — download and copy page">
+<title>planet.bat — Download Center</title>
+<style>
+:root{--bg:#070a12;--card:rgba(15,20,35,.78);--line:rgba(255,255,255,.1);--text:#f5f7ff;--muted:#9ca8bd;--accent:#6ea8ff;--accent2:#9b7bff;--ok:#55d187;--warn:#e6b450}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 20% 10%,#17265a 0,transparent 34%),radial-gradient(circle at 85% 20%,#35205e 0,transparent 30%),var(--bg);overflow-x:hidden}.stars{position:fixed;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(to bottom,black,transparent)}.wrap{position:relative;z-index:1;width:min(1080px,92%);margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:11px;align-items:center;font-weight:800;letter-spacing:.3px}.brand-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 22px var(--accent)}.nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px}.nav a:hover{color:#fff}.hero{min-height:calc(100vh - 76px);display:grid;place-items:center;padding:50px 0 90px}.hero-grid{width:100%;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.eyebrow{display:inline-flex;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:#b9c8e8;font-size:13px}.hero h1{font-size:clamp(46px,8vw,86px);line-height:.95;margin:18px 0;background:linear-gradient(100deg,#fff,#9bbcff 45%,#c1a5ff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-4px}.hero p{max-width:620px;color:var(--muted);font-size:18px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{appearance:none;border:1px solid var(--line);border-radius:13px;padding:14px 20px;color:#fff;text-decoration:none;font-weight:750;cursor:pointer;background:rgba(255,255,255,.06);transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:9px}.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.1)}.btn.primary{border:0;background:linear-gradient(135deg,#4d8dff,#8c5cff);box-shadow:0 12px 35px rgba(93,105,255,.28)}.btn.primary:hover{box-shadow:0 16px 42px rgba(93,105,255,.4)}.planet-card{min-height:410px;border:1px solid var(--line);border-radius:30px;background:var(--card);backdrop-filter:blur(20px);display:grid;place-items:center;box-shadow:0 30px 100px rgba(0,0,0,.35);position:relative;overflow:hidden}.planet{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#d9ecff 0 3%,#66a5ff 15%,#2762c9 48%,#101d54 78%);box-shadow:inset -35px -20px 55px rgba(0,0,0,.55),0 0 55px rgba(77,141,255,.35);position:relative;animation:float 5s ease-in-out infinite}.planet:before{content:"";position:absolute;inset:12% 5%;border-radius:50%;background:repeating-linear-gradient(165deg,transparent 0 18px,rgba(255,255,255,.13) 19px 26px,transparent 27px 44px);mix-blend-mode:screen;transform:rotate(-12deg)}.ring{position:absolute;width:330px;height:90px;border:2px solid rgba(145,190,255,.25);border-radius:50%;transform:rotate(-17deg)}.file-panel{position:absolute;bottom:22px;left:22px;right:22px;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:rgba(4,7,14,.55);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#bcd0ff;display:flex;justify-content:space-between;gap:12px}.dot-ok{color:var(--ok)}section{padding:75px 0}.section-title{font-size:32px;margin:0 0 10px}.section-text{color:var(--muted);line-height:1.7}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.card{padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.card h3{margin-top:0}.card p{color:var(--muted);line-height:1.6}.status{margin-top:16px;min-height:24px;color:var(--muted);font-size:14px}.error{color:var(--warn)!important}.success{color:var(--ok)!important}.footer{padding:35px 0 55px;border-top:1px solid var(--line);color:#6f7b91;font-size:13px}@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(3deg)}}@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.planet-card{min-height:330px}.cards{grid-template-columns:1fr}.nav a{margin-left:10px}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="wrap">
+<nav class="nav">
+<div class="brand"><span class="brand-dot"></span> planet.bat</div>
+<div><a href="#about">About</a><a href="dox.html">Documentation</a></div>
+</nav>
+
+<main class="hero">
+<div class="hero-grid">
+<div>
+<span class="eyebrow">● READY TO DOWNLOAD</span>
+<h1>planet.bat</h1>
+<p>Небольшой Windows BAT-файл с ASCII-анимацией вращающейся планеты. Скопируй его содержимое или скачай оригинальный файл из репозитория.</p>
+<div class="actions">
+<button class="btn primary" id="copyBtn" type="button">📋 Copy</button>
+<a class="btn" id="downloadBtn" href="https://github.com/n6767ooo6767-cmyk/-/raw/refs/heads/main/planet.bat" download="planet.bat">⬇️ OR DOWNLOAD</a>
+<a class="btn" href="dox.html">📖 Documentation</a>
+</div>
+<div id="status" class="status">Готово. Выбери действие.</div>
+</div>
+
+<div class="planet-card" aria-hidden="true">
+<div class="ring"></div><div class="planet"></div>
+<div class="file-panel"><span>planet.bat</span><span class="dot-ok">● online</span></div>
+</div>
+</div>
+</main>
+
+<section id="about">
+<h2 class="section-title">Что здесь есть?</h2>
+<p class="section-text">Страница специально сделана без автоматического запуска BAT-файла. Кнопка Copy копирует текст файла в буфер обмена, а OR DOWNLOAD только предлагает браузеру скачать его.</p>
+<div class="cards">
+<div class="card"><h3>📋 Copy</h3><p>Получает содержимое <code>planet.bat</code> и пытается скопировать его в буфер обмена.</p></div>
+<div class="card"><h3>⬇️ Download</h3><p>Открывает загрузку файла с GitHub. Если браузер не поддерживает автоматическое имя, он всё равно откроет файл.</p></div>
+<div class="card"><h3>🔒 Safe by design</h3><p>Сайт не выполняет BAT-файл. Запуск происходит только по действию пользователя в Windows.</p></div>
+</div>
+</section>
+
+<footer class="footer">planet.bat • GitHub download center</footer>
+</div>
 
 <script>
-function downloadPlanet() {
-    const url = "https://raw.githubusercontent.com/n6767ooo6767-cmyk/-/main/planet.bat";
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "planet.bat";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+const FILE_URL="https://github.com/n6767ooo6767-cmyk/-/raw/refs/heads/main/planet.bat";
+const copyBtn=document.getElementById("copyBtn");
+const status=document.getElementById("status");
+function setStatus(text,kind=""){status.textContent=text;status.className="status "+kind}
+async function fallbackDownload(){const a=document.createElement("a");a.href=FILE_URL;a.download="planet.bat";a.target="_blank";a.rel="noopener noreferrer";document.body.appendChild(a);a.click();a.remove()}
+async function copyFile(){copyBtn.disabled=true;copyBtn.textContent="⏳ Copying...";setStatus("Загружаем planet.bat…");try{const r=await fetch(FILE_URL,{cache:"no-store",redirect:"follow"});if(!r.ok)throw new Error("HTTP "+r.status);const text=await r.text();if(!text.trim())throw new Error("empty");if(!navigator.clipboard||!window.isSecureContext)throw new Error("clipboard");await navigator.clipboard.writeText(text);copyBtn.textContent="✅ Copied!";setStatus("Содержимое planet.bat скопировано в буфер обмена.","success");setTimeout(()=>{copyBtn.disabled=false;copyBtn.textContent="📋 Copy"},1800)}catch(e){copyBtn.disabled=false;copyBtn.textContent="📋 Copy";setStatus("Извините! Возникли неполадки с копированием! Мы скачаем вам файл!","error");setTimeout(fallbackDownload,900)}}
+copyBtn.addEventListener("click",copyFile);
 </script>
+</body>
+</html>
