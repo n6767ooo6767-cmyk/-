@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="planet.bat — download and copy page">
+<meta name="description" content="planet.bat — копирование и скачивание файла">
 <title>planet.bat — Download Center</title>
 <style>
 :root{--bg:#070a12;--card:rgba(15,20,35,.78);--line:rgba(255,255,255,.1);--text:#f5f7ff;--muted:#9ca8bd;--accent:#6ea8ff;--accent2:#9b7bff;--ok:#55d187;--warn:#e6b450}
@@ -17,49 +17,75 @@
 <div class="brand"><span class="brand-dot"></span> planet.bat</div>
 <div><a href="#about">About</a><a href="dox.html">Documentation</a></div>
 </nav>
-
 <main class="hero">
 <div class="hero-grid">
 <div>
-<span class="eyebrow">● READY TO DOWNLOAD</span>
+<span class="eyebrow">● READY</span>
 <h1>planet.bat</h1>
-<p>Небольшой Windows BAT-файл с ASCII-анимацией вращающейся планеты. Скопируй его содержимое или скачай оригинальный файл из репозитория.</p>
+<p>Скопируй содержимое файла или скачай его прямо отсюда. Никаких переходов на GitHub — обе основные кнопки работают прямо на этой странице.</p>
 <div class="actions">
-<button class="btn primary" id="copyBtn" type="button">📋 Copy</button>
-<a class="btn" id="downloadBtn" href="https://github.com/n6767ooo6767-cmyk/-/raw/refs/heads/main/planet.bat" download="planet.bat">⬇️ OR DOWNLOAD</a>
-<a class="btn" href="dox.html">📖 Documentation</a>
+<button class="btn primary" id="copyBtn" type="button">📋 Копировать</button>
+<button class="btn" id="downloadBtn" type="button">⬇️ Скачать</button>
+<a class="btn" href="dox.html">📖 Документация</a>
 </div>
 <div id="status" class="status">Готово. Выбери действие.</div>
 </div>
-
 <div class="planet-card" aria-hidden="true">
 <div class="ring"></div><div class="planet"></div>
-<div class="file-panel"><span>planet.bat</span><span class="dot-ok">● online</span></div>
+<div class="file-panel"><span>planet.bat</span><span class="dot-ok">● ready</span></div>
 </div>
 </div>
 </main>
-
 <section id="about">
-<h2 class="section-title">Что здесь есть?</h2>
-<p class="section-text">Страница специально сделана без автоматического запуска BAT-файла. Кнопка Copy копирует текст файла в буфер обмена, а OR DOWNLOAD только предлагает браузеру скачать его.</p>
+<h2 class="section-title">Как это работает?</h2>
+<p class="section-text">Кнопка «Копировать» получает содержимое файла и кладёт его в буфер обмена. Кнопка «Скачать» создаёт загрузку файла. Ни одна кнопка не запускает BAT-файл автоматически.</p>
 <div class="cards">
-<div class="card"><h3>📋 Copy</h3><p>Получает содержимое <code>planet.bat</code> и пытается скопировать его в буфер обмена.</p></div>
-<div class="card"><h3>⬇️ Download</h3><p>Открывает загрузку файла с GitHub. Если браузер не поддерживает автоматическое имя, он всё равно откроет файл.</p></div>
-<div class="card"><h3>🔒 Safe by design</h3><p>Сайт не выполняет BAT-файл. Запуск происходит только по действию пользователя в Windows.</p></div>
+<div class="card"><h3>📋 Копировать</h3><p>Содержимое <code>planet.bat</code> сразу попадает в буфер обмена.</p></div>
+<div class="card"><h3>⬇️ Скачать</h3><p>Файл скачивается прямо из этого интерфейса без открытия страницы GitHub.</p></div>
+<div class="card"><h3>🔒 Без автозапуска</h3><p>Сайт только получает или скачивает файл. Автоматического запуска BAT здесь нет.</p></div>
 </div>
 </section>
-
-<footer class="footer">planet.bat • GitHub download center</footer>
+<footer class="footer">planet.bat • Download Center</footer>
 </div>
-
 <script>
-const FILE_URL="https://github.com/n6767ooo6767-cmyk/-/raw/refs/heads/main/planet.bat";
+const FILE_URL="https://raw.githubusercontent.com/n6767ooo6767-cmyk/-/refs/heads/main/planet.bat";
 const copyBtn=document.getElementById("copyBtn");
+const downloadBtn=document.getElementById("downloadBtn");
 const status=document.getElementById("status");
 function setStatus(text,kind=""){status.textContent=text;status.className="status "+kind}
-async function fallbackDownload(){const a=document.createElement("a");a.href=FILE_URL;a.download="planet.bat";a.target="_blank";a.rel="noopener noreferrer";document.body.appendChild(a);a.click();a.remove()}
-async function copyFile(){copyBtn.disabled=true;copyBtn.textContent="⏳ Copying...";setStatus("Загружаем planet.bat…");try{const r=await fetch(FILE_URL,{cache:"no-store",redirect:"follow"});if(!r.ok)throw new Error("HTTP "+r.status);const text=await r.text();if(!text.trim())throw new Error("empty");if(!navigator.clipboard||!window.isSecureContext)throw new Error("clipboard");await navigator.clipboard.writeText(text);copyBtn.textContent="✅ Copied!";setStatus("Содержимое planet.bat скопировано в буфер обмена.","success");setTimeout(()=>{copyBtn.disabled=false;copyBtn.textContent="📋 Copy"},1800)}catch(e){copyBtn.disabled=false;copyBtn.textContent="📋 Copy";setStatus("Извините! Возникли неполадки с копированием! Мы скачаем вам файл!","error");setTimeout(fallbackDownload,900)}}
+function downloadFile(){
+  const a=document.createElement("a");
+  a.href=FILE_URL;
+  a.download="planet.bat";
+  a.rel="noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setStatus("Скачивание planet.bat запущено.","success");
+}
+async function copyFile(){
+  copyBtn.disabled=true;
+  copyBtn.textContent="⏳ Копируем...";
+  setStatus("Загружаем planet.bat…");
+  try{
+    const response=await fetch(FILE_URL,{cache:"no-store"});
+    if(!response.ok) throw new Error("HTTP "+response.status);
+    const text=await response.text();
+    if(!text.trim()) throw new Error("empty");
+    if(!navigator.clipboard||!window.isSecureContext) throw new Error("clipboard");
+    await navigator.clipboard.writeText(text);
+    copyBtn.textContent="✅ Скопировано!";
+    setStatus("Содержимое planet.bat скопировано в буфер обмена.","success");
+    setTimeout(()=>{copyBtn.disabled=false;copyBtn.textContent="📋 Копировать"},1800);
+  }catch(error){
+    copyBtn.disabled=false;
+    copyBtn.textContent="📋 Копировать";
+    setStatus("Извините! Возникли неполадки с копированием! Мы скачаем вам файл!","error");
+    setTimeout(downloadFile,900);
+  }
+}
 copyBtn.addEventListener("click",copyFile);
+downloadBtn.addEventListener("click",downloadFile);
 </script>
 </body>
 </html>
